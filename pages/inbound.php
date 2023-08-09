@@ -36,7 +36,7 @@
         </table>
 
         <hr/>
-        <button>Add</button>
+        <button>Add New</button>
     </fieldset>
     <br/>
     
@@ -75,7 +75,7 @@
             </tr>
         </table>
         <hr/>
-        <button>Add</button>
+        <button onclick="saveItem('item_code_01','item_name_01','lot_no_01','12.345','2M-3-1')">Save</button>
         <button>Cancel</button>
     </fieldset>
 </div>
@@ -163,8 +163,10 @@ $(function(){
     )
     ;
 
+    // item index //
+    var item_index = [];
+    index = item_index;
 
-    var item_index = Array();
     item_index.push('1');
     item_index.push('2');
 
@@ -193,10 +195,32 @@ $(function(){
 var i = 1;
 
 // add new item into list //
-function add_item(item_code, item_name, lot_no, qty, location){
+data_list = {};
+function saveItem(item_code, item_name, lot_no, qty, location){
+    alert('save item');
 
+    console.log(i);
+
+    var data = {};
+    data['item_code'] = item_code + i;
+    data['item_name'] = item_name + i;
+    data['lot_no'] = lot_no + i;
+    data['qty'] = qty;
+    data['location'] = location + i;
+
+    // insert item data into list //
+    data_list[i] = data;
+
+    console.log(data_list);
+    console.log(index);
+
+    i++;
 }
 
+// load items into list //
+function loadItem(){
+
+}
 
 // sandbox function //
 function sb(){
